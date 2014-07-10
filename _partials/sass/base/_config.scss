@@ -1,0 +1,132 @@
+//Typography
+
+$base-font-size:             16px;
+$base-line-height:           24px;
+$auto-scale-type:           false;
+$scale-ratio:               1.214;
+
+$primary-font-stack:      	'opensans', verdana, helvetica, arial, sans-serif;
+$secondary-font-stack:     	'bitter', georgia, times, serif;
+$monospace-font-stack: 		Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
+
+$use-web-fonts: 		true;
+$font-file-location: 	'fonts';
+$font-file-name: 		'bitter','opensans','uconnect';
+$font-italics: 			true, true, false;
+$font-weights: 			(400,700),(200,400,700),(400);
+$font-include-eot: 		true;
+
+
+// Show baseline grid for easier alignment;
+$show-baseline:       true;
+
+//Used if auto-scale-type is not in use.
+//Since functions are called before config,
+//we can use functions to calculate our values.
+$type-h1-size:             ceil(modular-scale(1));
+$type-h2-size:             ceil(modular-scale(5));
+$type-h3-size:             ceil(modular-scale(4));
+$type-h4-size:             ceil(modular-scale(3));
+$type-h5-size:             ceil(modular-scale(2));
+$type-h6-size:             ceil(modular-scale(1));
+
+//Grid
+
+$gutter:                 32px;
+$use-silent-classes:     true;
+$push:                   true;
+$pull:                   true;
+$use-markup-fix:        false; //Setting this to true while not using floats means there can be no whitespce between grid items.
+$use-floats:            false;
+$columns:                  12; //Using anything other than 12 may cause a bit of slow down during processing.
+
+$breakpoints: (
+    'smalls' '(max-width:640px)',                            //Everything up to 640px. Mostly phones.
+    'small' '(max-width: 480px)',                            //Up to 480px. Overrides Smalls. Small Phones, including iPhone.
+    'smallish''(min-width: 481px) and (max-width: 640px)',     //Between 480 and 640px. Overrides Smalls. Large phones/phablets.
+    'bigs' '(min-width: 641px)',                            //Everything larger than 640px. Tablets and Desktops.
+    'lap' '(min-width: 641px) and (max-width: 960px)',        //640-940px. Overrides Bigs. Mostly Tablets and small laptops.
+    'desk' '(min-width: 961px)'                                //940 and Up. Overrides Bigs. Large Tablets and Desktops.
+);
+
+// Give grid-abilities to breakpoints.
+// The more breakpoints defined here will result in longer preprocessing times.
+$breakpoint-has-widths: ('smalls', 'small', 'smallish', 'bigs', 'lap', 'desk');
+$breakpoint-has-push:   ('smalls', 'small', 'smallish', 'bigs', 'lap', 'desk');
+$breakpoint-has-pull:   ('smalls', 'small', 'smallish', 'bigs', 'lap', 'desk');
+
+
+//Colors - based on:
+//http://blog.12spokes.com/web-design-development/simple-css-color-management-with-sass/
+// Darker and lighter shades are available by adding
+// -dark/-darker/-light/-lighter to the end of variable names.
+//The darker and ligher variations are defined in colors/colors
+
+$colors: (
+	primary: (
+		base: #000
+	),
+	primary-alt: (
+		base: #444
+	),
+	accent: (
+		base: #666
+	),
+	accent-alt: (
+		base: #888
+	),
+	action: (
+		base: #999
+	),
+	function: (
+		base: #aaa
+	),
+	alert: (
+		base: #ddd
+	)
+);
+
+//It's rare that you need to make this something other than one of the above variables.
+$link-color: color(primary-alt);
+
+
+//Output helpers as actual classes?
+//These will be output for every breakpoint.
+
+$include-spacing-classes: 			true;
+$include-alignment-classes: 		true;
+
+//Slider/Carousel settings
+//A.K.A. Slick: http://kenwheeler.github.io/slick/
+//Output Slider/Carousel?
+$include-slider: 					true;
+
+$slick-font-path: "fonts/";
+$slick-loader-path: "../images/";
+$slick-arrow-color: white;
+$slick-dot-color: black;
+$slick-prev-character: '\2190';
+$slick-next-character: '\2192';
+$slick-dot-character: '\2022';
+
+//Tab-box settings
+
+//Do you want to create styles for tabs?
+//Might be unnecessary for certain projects.
+$include-tabs: 						true;
+
+$tab-invert-active:                 false;
+$tab-border:                        #999;
+$tab-button-bg:                     color(accent);
+$tab-button-secondary: 				color(primary-alt);
+$tab-content-bg:                    #fff;
+$tab-button-text:                   #fff;
+$tab-border-radius:                 2px;
+$tab-spacing:                       2px;
+
+
+//General Border settings
+$include-border-classes: 			true;
+$border-width: 						2px;
+$border-style: 						solid;
+$border-color: 						color(action);

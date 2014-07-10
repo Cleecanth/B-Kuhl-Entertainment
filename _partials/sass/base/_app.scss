@@ -1,0 +1,826 @@
+//--------------------------------\\
+//    Application-specific CSS
+//---------------------------------\\
+
+// Put all of your normal/application-specific CSS here.
+
+.wrap{
+    @extend %bigs_eleven_twelfths; //90%
+	@include mq((lap,smallish)){width: 97%;}
+    @extend %clearfix;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: block !important;
+    float: none;
+}
+@include mq(small){
+	.wrap{
+        width: 96%;
+    }
+}
+@include mq(smalls){
+	.tabs{
+		min-height: 44px;
+	}
+	.tab{
+		min-height: 46px;
+	}
+	h1, h6{
+		@include type-font-size(modular-scale(1, 1.17));
+	}
+	h2{
+		@include type-font-size(modular-scale(5, 1.17));
+	}
+	h3{
+		@include type-font-size(modular-scale(4, 1.17));
+	}
+	h4{
+		@include type-font-size(modular-scale(3, 1.17));
+	}
+	h5{
+		@include type-font-size(modular-scale(2, 1.17));
+	}
+}
+//
+//------GENERAL OVERRIRDES--------//
+//
+html{
+	background-color: #efefef;
+	color: #041927;
+	@include mq(lap){
+		font-size: 14px;
+	}
+	@include mq(smalls){
+		font-size: 13px;
+	}
+}
+.list_bordered > li{
+	border-top-width: 2px;
+}
+.button{
+    @extend %button;
+}
+.button_small{
+	@extend %button_small;
+	vertical-align: middle;
+}
+.tab{
+	text-transform: uppercase;
+	letter-spacing: .5px;
+	@extend %type_bold;
+	@extend small;
+	text-decoration: none;
+	text-align: left;
+	text-indent: 0 !important;
+	position: relative;
+}
+.tabbed{
+	min-height: 0;
+}
+[type="text"],[type="search"]{
+	border: 0;
+	box-shadow: 0;
+	border-radius: 2px;
+	@extend %pad_half;
+	background-color: colors(alert);
+	transition: width .2s ease;
+}
+
+@include headings(1 , 4){
+	font-weight: 400;
+}
+
+.media_block{
+    @extend %media_block;
+    @extend %cf;
+}
+
+.table_striped tr:nth-child(odd) td {
+	background-color: color(primary-alt,lightest);
+}
+.table_striped th, .table_striped td {
+	border-color: color(function,dark);
+	border-style: solid;
+}
+.tab_topline > .tabs{
+	background-color: #ddd;
+}
+.tab_minimal > .tab_content{
+	border-bottom-width: 2px !important;
+	border-bottom-color: color(function);
+}
+hr{
+	border-top-width: 2px;
+	margin-top: -2px;
+}
+
+
+
+
+//----------GRIDS------------//
+//---------------------------//
+
+//-----------Rows-----------//
+
+.row{
+    @extend %grid;
+}
+.row_narrow{
+    @extend %grid_narrow;
+}
+.fixed_row{
+    @extend %grid;
+    margin-left: 0;
+}
+.row_right{
+	@extend %grid_right;
+}
+.row_center{
+	@extend %grid_center;
+}
+.row_bottom{
+	@extend %grid_bottom;
+}
+.row_middle{
+	@extend %grid_middle;
+}
+.row_auto {
+    display: table-row;
+}
+
+
+//-------Columns-------//
+.column{
+    @extend %grid_item;
+    @extend %one_whole;
+}
+.row_auto > .column {
+    display: table-cell;
+    position: relative;
+}
+.column_auto{
+	width: auto;
+	letter-spacing: normal;
+}
+.half{	@extend %one_half;}
+.third{
+	@extend %one_whole;
+	@extend %bigs_one_third;
+}
+.two_thirds{
+	@extend %one_whole;
+	@extend %bigs_two_thirds;
+}
+.third_small{
+	@extend %one_third;
+	@extend %smallish_one_whole;
+	@extend %bigs_one_whole;
+}
+.quarter{@extend %one_quarter;}
+.main_content{
+	@extend %one_whole;
+	@extend %bigs_four_fifths;
+	@extend %desk_three_quarters;
+}
+
+.side_content{
+	@extend %one_whole;
+	@extend %lap_one_fifth;
+	@extend %desk_one_quarter;
+}
+.side_content_fixed{
+	@extend %one_quarter;
+}
+.half .side_content, .half .main_content{
+	@extend %smalls_one_half;
+}
+.split_side{
+	@extend %lap_one_ninth;
+	@extend %smallish_one_ninth;
+}
+.split_main{
+	@extend %lap_eight_ninths;
+	@extend %smallish_eight_ninths;
+}
+
+.small_auto{
+	@include mq(smalls){
+		width: auto;
+	}
+}
+.sidebar{
+    @extend %smalls_one_whole;
+    @extend %bigs_one_quarter;
+}
+.content{
+    @extend %smalls_one_whole;
+    @extend %bigs_three_quarters;
+}
+.add-on{
+    @extend %one_whole;
+    @extend %smallish_one_fifth;
+    @extend %bigs_one_sixth;
+}
+.wide-content{
+    @extend %smallish_four_fifths;
+    @extend %bigs_five_sixths;
+}
+
+
+//---------------------------------//
+//---Possible inclusion in FEF-----//
+//---------------------------------//
+
+.media_block_narrow .img{
+	@extend %space_r_half;
+	@extend %float_left;
+}
+// "Flag" Object
+.media_block_flush {
+    overflow: hidden;
+	position: relative;
+	display: table;
+	width: 100%;
+
+	.media {
+		position: relative;
+		display: table-cell;
+		background-color: #aaa;
+		height: 100%;
+		vertical-align: middle;
+		text-align: center;
+
+		.img{
+			float: none;
+			padding: 0;
+			display: inline-block;
+    		vertical-align: middle;
+		}
+		.icon:before, .icon:after{
+			padding: 0;
+		}
+	}
+	.media_icon{
+		padding-left: 1.5em;
+	}
+	.media_icon:before {
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 100%;
+		background-color: #fff;
+		vertical-align: top;
+		padding-left: .25em;
+	}
+	.media_body{
+		display: table-cell;
+		vertical-align: top;
+		@extend %pad_h_half;
+	}
+
+}
+.absolute{
+	position: absolute;
+}
+.contain{
+	position: relative;
+}
+
+
+
+
+
+.icon:before, .icon:after, .media_icon:before{
+	font-family: 'uconnect';
+	font-feature-settings: "dlig" on;
+	display: inline;
+	padding-right: .25em;
+	vertical-align: baseline;
+	font-weight: 400;
+	text-transform: lowercase;
+}
+.icon_pad_n:after, .icon_pad_n:before{
+	padding-right: 0;
+}
+.icon_end:after{
+	content: attr(data-icon-after);
+}
+.icon_start:before, .media_icon:before{
+	content: attr(data-icon);
+}
+///////////////////////
+//Specific Icons (bad bad bad code)
+//---------------
+.tag:before{
+	content: "tag";
+}
+.close:after{
+	content: "delete";
+}
+.company:before{
+	content: attr(data-icon);
+}
+
+//
+//------Main Nav--------//
+//
+.top_nav{
+	position: relative;
+	z-index: 100;
+}
+.main_nav {
+	@include mq(smalls){
+		border-top-color: transparent;
+	}
+	& .tabbed{
+		@include mq(bigs){
+			overflow:visible;
+		}
+		overflow-x: auto;
+		overflow-y: hidden;
+		@include mq(lap){
+			overflow: auto;
+		}
+	}
+	& .tabs{
+		display: table-row;
+	}
+	& .tab{
+		@extend %desk_pad_r;
+		@extend %desk_pad_l_half;
+		@extend %pad_h_half;
+		width: auto;
+		display: table-cell;
+		vertical-align: middle;
+		border-bottom-color: color(alert);
+		top: 0 !important;
+		position: relative;
+		transition: all 150ms ease;
+		background-color: rgba(0,0,0,0);
+	}
+	& .tab:after{
+		margin-right: -5px;
+		margin-left: 5px;
+	}
+	& .toggle.active{
+		cursor: pointer;
+		background-color: color(primary-alt) !important;
+		color: #fff !important;
+		border-bottom-color: transparent !important;
+
+		&:after{
+			transform: rotateX(180deg);
+			opacity: 0.8;
+		}
+	}
+}
+.tab_link:hover, .toggle:hover{
+	cursor: pointer !important;
+}
+.tier_one{
+	background-image: url(../images/main_bg.jpg);
+	background-position: top center;
+	background-size: cover;
+}
+
+/////////////////////////
+// 	Mega Menu
+/////////////////////////
+
+
+.mega_menu {
+	text-align: center;
+	width: 100%;
+	z-index: 100;
+	display: none;
+	@include type-space(margin-top, -.5);
+	@include mq(bigs){
+		z-index: 3;
+		display: block !important;
+		margin-top: 0;
+	}
+	& .tabbed {
+		display: inline-block;
+		text-align: left;
+		@include mq(bigs){
+			padding: 0;
+			width: 100%;
+		}
+		width: 95%;
+
+	}
+	& .tab_content{
+		background-color: rgba(255,255,255,0.975) !important;
+		@include mq(bigs){padding: 0;}
+		width: 100%;
+		position: relative;
+	}
+	& .tab_button:last-child{
+		border-bottom-width: 1px !important;
+	}
+	& .tab_link:not(.home_link){
+		background-color: color(alert);
+		color: color(primary);
+	}
+	& .tab_link:after{
+		content: " ";
+		margin-right: 0;
+	}
+	.tab_button.active{
+		background-color: rgba(255,255,255,0.975) !important;
+	}
+	& .active:after{
+		transform: rotateX(180deg);
+	}
+	& [href="#home"]:after{
+		display: none;
+	}
+
+}
+.logo {
+	vertical-align: middle !important;
+	@include type-space(min-height, 2);
+	min-width: 175px;
+	text-align: center;
+	@include mq(small){
+		padding-left: 0;
+		width: auto;
+	}
+	@include mq(desk){
+		@include type-space(min-height, 2.75);
+		max-width: none;
+	}
+	@include mq((smallish, lap)){
+		text-align: left;
+		width: auto;
+	}
+	@include mq(lap){
+		max-width: none;
+	}
+
+	& a{
+		display: inline-block;
+		max-width: 150px;
+		vertical-align: bottom;
+		@include mq(bigs){
+			max-width: 190px;
+
+		}
+	}
+}
+
+
+/////////////////////////////
+//------Utility Nav--------//
+/////////////////////////////
+.utility {
+	@include mq(bigs){
+		@include type-space(min-height, 2);
+	}
+	@extend %smalls_pad_b_half;
+	vertical-align: middle;
+
+
+	& .login_button, & .search_button, & input[type="search"]{
+		@include mq(smalls){
+			@include type-space(line-height, 1.5);
+		}
+	}
+	& [type="text"], & [type="search"]{
+		@extend %pad_v_quarter;
+		@extend %pad_l_quarter;
+		@extend %pad_r;
+		outline: 1px solid transparent;
+	}
+	& input[type="search"]{
+		@include mq(smalls){
+			@include type-space(min-height, 2);
+		}
+	}
+	& .login_button:before{
+		@include mq(smalls){
+			content: "user";
+			padding-right: 5em;
+		}
+	}
+	& .login_button{
+		white-space: nowrap;
+		overflow: hidden;
+		@include mq(smalls){
+			@include type-space(max-width, 2);
+		}
+	}
+
+	& [type="search"]:focus{
+		outline: none;
+		background-color: #fff;
+		box-shadow: inset 0 0 0px 1px rgba(0,0,0,0.4);
+		@extend %desk_one_whole;
+	}
+
+	& .search_button{
+		position: absolute !important;
+		right: .5%;
+		top: 0;
+		outline: 0;
+		max-width: 0;
+		max-height: 0;
+		white-space: nowrap;
+	}
+	& .list_nav_space a{
+		letter-spacing: .5px;
+		white-space: nowrap;
+		@extend %smalls_pad_v_half;
+		@include type-space(min-height, 1.5);
+		@include mq(lap){
+			padding-right: 2% !important;
+		}
+	}
+}
+
+.utility_column {
+	@include mq(bigs){width: 65%; display: inline-block !important;}
+	left: 0;
+	@extend %one_whole;
+	display: none;
+	.inline_list li{
+		padding-right: 0;
+	}
+}
+.search_container {
+	padding: 0;
+	top: 0;
+	@include mq(smalls){
+		width: 85%;
+		margin-left: 10%;
+	}
+}
+.search_column {
+	position: relative;
+	@include type-space(top, .25);
+	@include type-space(padding-bottom, .25);
+	@include mq(bigs){
+		height: 0;
+		overflow: visible;
+		padding-bottom: 0;
+	}
+	@include mq(lap){
+		width: 30%;
+	}
+	transition: width 200ms ease-in;
+}
+
+.login_column {
+	width: auto;
+	@extend %pad_l_half;
+}
+
+/////////////////////////////
+//------Search-------------//
+/////////////////////////////
+.search_button{
+	overflow: hidden;
+	opacity: 0;
+	z-index: -1;
+	transition: all 250ms ease-in;
+	margin-right: .5%;
+}
+
+.search_button:after{
+	font-family: $primary-font-stack;
+	content: "\00A0Search";
+	display: inline-block;
+	line-height: 1em;
+	max-width: 0em;
+	overflow: hidden;
+	text-indent: .25em;
+	transition-delay: 1s;
+	text-transform: capitalize;
+	transition: max-width .25s ease-in;
+}
+.search_expand:focus + .button:after,
+.search_active .search_button:after{
+	text-indent: 0;
+	overflow: visible;
+	z-index: 4;
+	max-width: 5em;
+	opacity: 1;
+	margin-top: 2px;
+}
+.search_expand:focus + .button,
+.search_active .search_button{
+	z-index: 4;
+	opacity: 1;
+	max-height: 20em;
+	max-width: 20em;
+}
+.search.icon:after {
+	position: absolute;
+	top: 0;
+	right: 0;
+	@extend %pad_h_half;
+}
+.search_label{
+	z-index: 4;
+	width: 1em;
+	margin-right: .5em;
+	overflow: hidden;
+	position: absolute !important;
+	right: 0;
+	top: 0;
+	height: 100%;
+	vertical-align: middle;
+	@include type-font-size(16px, false);
+
+	& span {
+		display: inline-block;
+		vertical-align: middle;
+		width: 0;
+		overflow: hidden;
+		height: 100%;
+		text-indent: -50px;
+	}
+
+	&:after{
+		vertical-align: middle;
+		padding: 0;
+	}
+}
+
+//------Search-------------//
+
+.search_anim {
+	transition: all 300ms ease-in;
+}
+.search_anim_bounce {
+	transition: all 350ms cubic-bezier(.25, .1, .5, 1.45);
+	backface-visibility: hidden;
+	perspective: 1;
+}
+
+
+.search_shade {
+	position: absolute;
+	top: -1px;
+	height: 0px;
+	overflow: hidden;
+	width: 100%;
+	z-index: 3;
+	background-color: #fff;
+	background-color: rgba(255,255,255,0.97);
+	transition-duration: 400ms;
+	border-bottom: 0px solid #fff;
+
+	.search_close{
+		@extend %one_fourth;
+		@extend %push_three_fourths;
+		@include type-space(min-height, 2.5);
+		cursor: pointer;
+		transition: transform 100ms ease-out;
+		transform-origin: center right;
+		&:hover, &:focus{
+			color: #999;
+			transform: scale(1.08);
+		}
+		&:active{
+			transform: scale(1.05);
+			color: #333;
+		}
+	}
+
+}
+.search_expand {
+	position: relative;
+	z-index: 3;
+}
+.search_active {
+	& .search_column {
+		@extend %one_whole;
+		@extend %lap_five_sixths;
+		@extend %desk_three_quarters;
+	}
+	&.search_shade {
+		height: 100%;
+		box-shadow: 0 2px 3px rgba(0,0,0,0.1);
+	}
+	& .search_button{
+		@include mq(bigs){
+			margin-top: .2em;
+			@include type-space(line-height, 1);
+		}
+	}
+	& .search_label{
+		@extend %space_r_2;
+	}
+	& .search_expand {
+		position: absolute;
+	}
+	& #search_main {
+		@extend %bigs_pad_half;
+	}
+	& .utility_column {
+		@include mq(bigs){position: absolute;}
+	}
+	& .search_container {
+		@include mq(smalls){
+			position: absolute;
+			margin-left: 3%;
+		}
+	}
+}
+.search_shade{
+	.side_content{
+		@extend %desk_one_quarter;
+		@extend %lap_one_sixth;
+		color: color(function);
+		}
+	.main_content{
+		@extend %one_whole;
+		@extend %lap_five_sixths;
+		@extend %desk_three_quarters;
+	}
+}
+
+
+
+
+
+
+//Body
+
+.primary_column p{max-width: 43em;}
+.primary_column{max-width: 60em;}
+.primary_column .tabbed .tab_content{
+	@include mq(desk){
+		@include type-space-sc(padding, 1.5, 2, 2);
+	}
+}
+.heading, h1 {
+	@extend h1;
+	@include type-space(line-height, 1);
+}
+.primary_column h2, .sub_heading{
+	@include type-font-size(modular-scale(-1), false);
+	@include type-space(line-height, 1);
+	@extend %txt_label;
+	@extend %txt_upper;
+	@extend %type_bold;
+}
+h1+h2{
+	@extend .sub_heading;
+	color: colors(function);
+	@extend %space_negative;
+}
+.primary_column {
+	h3, h4, h5, h6{
+		@include type-font-size(modular-scale(0));
+		@extend %txt_label;
+		@extend %type_bold;
+	}
+}
+.small_heading{
+	@include type-font-size(modular-scale(0));
+	@extend %txt_label;
+	@extend %type_bold;
+}
+
+//----------New Headings----------//
+
+
+
+.js-filters{
+	@include media-query((lap,smallish)){
+		position: absolute;
+		width: auto;
+		background-color: rgba(255,255,255,0.9);
+		z-index: 2;
+		display: none;
+		border-radius: 2px;
+		box-shadow: 0 2px 3px rgba(0,0,0,0.2);
+	}
+	@include mq(small){
+		display: none;
+	}
+	@extend %lap_pad_half;
+	@extend %smallish_pad_half;
+}
+
+.content_footer{
+	overflow: hidden;
+}
+
+
+
+
+
+#toggles{
+    position: fixed;
+    bottom: -1px;
+    right: -1px;
+    z-index: 100;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 5px 10px;
+    border-radius: 3px 0px 0px 0px;
+}
+

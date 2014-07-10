@@ -1,0 +1,158 @@
+//------------------------------------
+//    $COLORS
+//------------------------------------
+//Based on:
+//http://blog.12spokes.com/web-design-development/simple-css-color-management-with-sass/
+//Darker and lighter darkens are available by adding -dark/-darker/-light/-lighter to the end of variable names.
+
+$colors: (
+	primary: (
+		base: #063b6d
+	),
+	primary-alt: (
+		base: #5f82a3
+	),
+	accent: (
+		base: #d40026
+	),
+	accent-alt: (
+		base: #fe0202
+	),
+	action: (
+		base: #4c7659
+	),
+	function: (
+		base: #d4c9ad
+	),
+	alert: (
+		base: #b22727
+	)
+) !default;
+
+//Color map
+//For easy access, just declare color([color name],[color modifier])
+// e.g.
+// div{
+//	background-color: color(primary, lighter);
+//	}
+//
+// If you'd prefer to just get the base color, you do not need to declare 'base',
+// just declare color([color name]). 'base' is implied.
+
+$colors: (
+	primary: (
+		base: colors(primary),
+		light: lighten(colors(primary), 10%),
+		lighter: lighten(colors(primary), 20%),
+		lightest: lighten(colors(primary), 40%),
+		dark: darken(colors(primary), 10%),
+		darker: darken(colors(primary), 20%),
+		darkest: darken(colors(primary), 40%)
+	),
+	primary-alt: (
+		base: colors(primary-alt),
+		light: lighten(colors(primary-alt), 10%),
+		lighter: lighten(colors(primary-alt), 20%),
+		lightest: lighten(colors(primary-alt), 35%),
+		dark: darken(colors(primary-alt), 10%),
+		darker: darken(colors(primary-alt), 20%),
+		darkest: darken(colors(primary-alt), 35%)
+	),
+	accent: (
+		base: colors(accent),
+		light: lighten(colors(accent), 10%),
+		lighter: lighten(colors(accent), 20%),
+		lightest: lighten(colors(accent), 35%),
+		dark: darken(colors(accent), 10%),
+		darker: darken(colors(accent), 20%),
+		darkest: darken(colors(accent), 35%)
+	),
+	accent-alt: (
+		base: colors(accent-alt),
+		light: lighten(colors(accent-alt), 10%),
+		lighter: lighten(colors(accent-alt), 20%),
+		lightest: lighten(colors(accent-alt), 35%),
+		dark: darken(colors(accent-alt), 10%),
+		darker: darken(colors(accent-alt), 20%),
+		darkest: darken(colors(accent-alt), 35%)
+	),
+	action: (
+		base: colors(action),
+		light: lighten(colors(action), 10%),
+		lighter: lighten(colors(action), 20%),
+		lightest: lighten(colors(action), 35%),
+		dark: darken(colors(action), 10%),
+		darker: darken(colors(action), 20%),
+		darkest: darken(colors(action), 35%)
+	),
+	function: (
+		base: colors(function),
+		light: lighten(colors(function), 10%),
+		lighter: lighten(colors(function), 20%),
+		lightest: lighten(colors(function), 35%),
+		dark: darken(colors(function), 10%),
+		darker: darken(colors(function), 20%),
+		darkest: darken(colors(function), 35%)
+	),
+	alert: (
+		base: colors(alert),
+		light: lighten(colors(alert), 10%),
+		lighter: lighten(colors(alert), 20%),
+		lightest: lighten(colors(alert), 35%),
+		dark: darken(colors(alert), 10%),
+		darker: darken(colors(alert), 20%),
+		darkest: darken(colors(alert), 35%)
+	)
+);
+
+$primary-color: colors(primary) !default;        		//UW Blue (dark blue)
+$primary-color-alt: colors(primary-alt) !default;    	//UW Steel Blue
+$brand-color: colors(primary) !default;
+$accent-color: colors(accent) !default;        			//UW Red (maroonish-red)
+$accent-color-alt: colors(accent-alt) !default;    		//UW Fire Red (orangey-red)
+$action-color: colors(action) !default;         	//Green / Earth
+$function-color: colors(function) !default;       		//UW Tan
+$alert-color: colors(alert) !default;         	 		//Red
+$border-color: #8a9095 !default;         				//Grey
+$link-color: $primary-color !default;
+
+
+$primary-color-dark: darken($primary-color, 10%)                  !default;    //Darker UW Blue (dark blue)
+$primary-color-alt-dark: darken($primary-color-alt, 10%)          !default;    //Darker UW Steel Blue
+$accent-color-dark: darken($accent-color, 10%)                    !default;    //Darker UW Red (maroonish-red)
+$accent-color-alt-dark: darken($accent-color-alt, 10%)            !default;    //Darker UW Fire Red (orangey-red)
+$action-color-dark: darken($action-color, 10%)                    !default;    //Darker Green / Earth
+$function-color-dark: darken($function-color, 10%)                !default;    //Darker UW Tan
+$alert-color-dark: darken($alert-color, 10%)                      !default;    //Darker Red
+$border-color-dark: darken($border-color, 10%)                    !default;       //Blueish-Gray
+$link-color-dark: darken($link-color, 10%)                         !default;
+
+$primary-color-darker: darken($primary-color, 20%)              !default;    //Deep UW Blue (dark blue)
+$primary-color-alt-darker: darken($primary-color-alt, 20%)      !default;    //Deep UW Steel Blue
+$accent-color-darker: darken($accent-color, 20%)                !default;    //Deep UW Red (maroonish-red)
+$accent-color-alt-darker: darken($accent-color-alt, 20%)        !default;    //Deep UW Fire Red (orangey-red)
+$action-color-darker: darken($action-color, 20%)                !default;    //Deep Green / Earth
+$function-color-darker: darken($function-color, 20%)            !default;    //Deep UW Tan
+$alert-color-darker: darken($alert-color, 20%)                  !default;    //Deep Red
+$border-color-darker: darken($border-color, 20%)                !default;      //
+$link-color-darker: darken($link-color, 20%)                       !default;
+
+$primary-color-light: lighten($primary-color, 10%)               !default;    //Ligher UW Blue
+$primary-color-alt-light: lighten($primary-color-alt, 10%)       !default;    //Ligher UW Steel Blue
+$accent-color-light: lighten($accent-color, 10%)                 !default;    //Ligher UW Red (maroonish-red)
+$accent-color-alt-light: lighten($accent-color-alt, 10%)         !default;    //Ligher UW Fire Red (orangey-red)
+$action-color-light: lighten($action-color, 10%)                 !default;    //Ligher Green / Earth
+$function-color-light: lighten($function-color, 10%)             !default;    //Ligher UW Tan
+$alert-color-light: lighten($alert-color, 10%)                   !default;    //Ligher Red
+$border-color-light: lighten($border-color, 10%)                 !default;      //Lighter Grey
+$link-color-light: lighten($link-color, 10%)                      !default;
+
+$primary-color-lighter: lighten($primary-color, 20%)               !default;    //Ligher UW Blue
+$primary-color-alt-lighter: lighten($primary-color-alt, 20%)       !default;    //Ligher UW Steel Blue
+$accent-color-lighter: lighten($accent-color, 20%)                 !default;    //Ligher UW Red (maroonish-red)
+$accent-color-alt-lighter: lighten($accent-color-alt, 20%)         !default;    //Ligher UW Fire Red (orangey-red)
+$action-color-lighter: lighten($action-color, 20%)                 !default;    //Ligher Green / Earth
+$function-color-lighter: lighten($function-color, 20%)             !default;    //Ligher UW Tan
+$alert-color-lighter: lighten($alert-color, 20%)                   !default;    //Ligher Red
+$border-color-lighter: lighten($border-color, 20%)                 !default;      //Lighter Grey
+$link-color-lighter: lighten($link-color, 20%)                     !default;

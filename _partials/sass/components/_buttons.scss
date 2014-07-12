@@ -1,6 +1,6 @@
 @mixin button(
 	$size: 'medium',
-    $flat-button: true,
+    $button-type: 'flat',
     $button-color-bg: colors(link),
     $button-color-secondary: colors(link,dark),
     $button-color-text: #fff,
@@ -11,20 +11,20 @@
 	$padding: unquote('_half');
 	@if $size == 'large'{
 		$padding: unquote('');
-		@include type-space(padding-top, 1);
+		@include type-space(padding-top, .75);
 		@include type-space(padding-bottom, .75);
-		@include type-space(margin-bottom, .25);
+		@include type-space(margin-bottom, .5);
 	}
 	@if $size == 'small'{
 		$padding: unquote('_quarter');
 		@include type-space(padding-top, .25);
-		@include type-space(padding-bottom, .175);
-		@include type-space(margin-bottom, .2);
+		@include type-space(padding-bottom, .25);
+		@include type-space(margin-bottom, .5);
 	}
 	@if $size == 'medium'{
 		@include type-space(padding-top, .5);
-		@include type-space(padding-bottom, .475);
-		@include type-space(margin-bottom, .75);
+		@include type-space(padding-bottom, .5);
+		@include type-space(margin-bottom, 1);
 	}
     cursor: pointer;
     vertical-align: middle;
@@ -34,7 +34,9 @@
 	text-decoration: none;
     text-align: center;
 	background-color: $button-color-bg;
-    @if $flat-button == true{
+	transition: all 200ms ease-out;
+
+    @if $button-type == 'flat'{
 
 		border-bottom: 0px;
 
@@ -44,7 +46,10 @@
 			box-shadow: inset 0 2px $button-color-secondary;
 		}
 
-    }@else{
+    }@else if $button-type == 'ghost'{
+		border: $border-radius/2 solid $button-color-secondary;
+
+	}@else{
 
         background-image: linear-gradient(top, $button-color-bg 0.05%, $button-color-secondary 100% );
         filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='$button-color-bg', endColorstr='$button-color-secondary');
@@ -59,7 +64,7 @@
 
     &:hover, &:focus {
 
-        @if $flat-button == true{
+        @if $button-type == 'flat'{
 
            @if $reversed == false{
 			   color: mix($button-color-text, lighten($button-color-secondary, 5%), 95%);
@@ -70,7 +75,12 @@
 			   background-color: lighten($button-color-bg, 5%);
 			   box-shadow: inset 0 2px 1px lighten($button-color-secondary, 10%);
 		   }
-        }@else{
+
+		}@else if $button-type == 'ghost'{
+			border-color: mix($button-color-text, lighten($button-color-secondary, 5%), 95%);
+			background-color: rgba(mix($button-color-secondary,$button-color-text, 30%), .3);
+        	color: $button-color-text;
+		}@else{
 			color: mix($button-color-text, $button-color-secondary, 95%);
             background-color: $button-color-secondary;
             background: linear-gradient( top, $button-color-secondary 0.05%, $button-color-bg 100% );
@@ -82,17 +92,24 @@
         position:relative;
         top: 1px;
 
-        @if $flat-button == true{
+        @if $button-type == 'flat'{
+
 			@if $reversed == false{
 				color: mix($button-color-text, darken($button-color-secondary, 2%), 80%);
 				background-color: darken($button-color-secondary, 2%);
-            box-shadow: inset 0 1px 1px darken($button-color-secondary, 12%);
+            	box-shadow: inset 0 1px 1px darken($button-color-secondary, 12%);
+
 			}@else{
 				color: mix($button-color-text, darken($button-color-bg, 5%), 80%);
 				background-color: darken($button-color-bg, 5%);
-            box-shadow: inset 0 -2px 0px mix($button-color-secondary, $button-color-bg, 15%);
+            	box-shadow: inset 0 -2px 0px mix($button-color-secondary, $button-color-bg, 15%);
 			}
-        }@else{
+
+        }@else if $button-type == 'ghost'{
+			background-color: $button-color-secondary;
+			color: mix(set_text_color($button-color-secondary), $button-color-text, 70%);
+
+		}@else{
 			color: mix($button-color-text, darken($button-color-secondary, 2%), 80%);
 			background-color: darken($button-color-secondary, 2%);
             background: linear-gradient( top, darken($button-color-secondary, 5%) 0.05%, darken($button-color-bg, 5%)100%);
@@ -105,13 +122,15 @@
     &::selection{background: transparent;}
 	&::-moz-selection{background: transparent;}
 	&::-moz-focus-inner{border: 0}
-
 }
 
 //Useful placeholder selector for simple button creation.
+.button_ghost, %button_ghost{
+	@include button('medium', 'ghost', transparent, #fff, #fff, 4px);
+}
 
 %button{
-    @include button('medium', true, #777, #ddd, #fff, 2px, true);
+    @include button('medium', 'flat', #777, #ddd, #fff, 2px, true);
 }
 %button_large{
     @include type-font-size(modular-scale(2), false);
@@ -129,7 +148,8 @@
 }
 
 %button_group{
-	display: table-row;
+	display: table;
+	table-layout: fixed;
 
 	.button_group_button{
 		border-radius: 0;

@@ -252,6 +252,10 @@ $classtype: unquote(", .");
 	{
 		@include type-space(margin-top, -1);
 	}
+	%#{$namespace}space_negative_2#{$classtype}#{$namespace}space_negative_2
+	{
+		@include type-space(margin-top, -2);
+	}
 }
 %negative_top{
 	@include type-space(margin-top, -1);

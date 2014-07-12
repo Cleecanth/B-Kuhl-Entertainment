@@ -393,11 +393,9 @@ hr{
 	width: 100%;
 	z-index: 100;
 	display: none;
-	@include type-space(margin-top, -.5);
 	@include mq(bigs){
 		z-index: 3;
 		display: block !important;
-		margin-top: 0;
 	}
 	& .tabbed {
 		display: inline-block;

@@ -71,7 +71,7 @@
 			//only if they contain more than one tab_content child
             a(tabbed).each(function(){
 				if (a(this).children('.tab_content').length > 1
-					|| a(this).attr('data-tabbed') != 'true'){
+					&& a(this).attr('data-tabbed') != 'true'){
 					   a(this).prepend("<nav class='tabs' />");
 				};
 			});
@@ -90,7 +90,7 @@
             });
 
             //Make the first tab and tab_button in each grouping the active tab.
-            a(".tabbed .tab_button:first-of-type, .tab:first-child").addClass("active");
+            a(".tabbed .tab_button:first-of-type, .tab:first-child").not("#mega_buttons .tab").addClass("active");
 
             //Hide all tab_content.
             a(".tab_content").hide();
